@@ -27,7 +27,7 @@ button:disabled{opacity:.4}
 <div class="actions">
 <label class="pick primary">🖼️ Fotoğraf yükle<input id="gallery" type="file" accept="image/*"></label>
 <label class="pick">📷 Kamera<input id="camera" type="file" accept="image/*" capture="environment"></label>
-<button id="a4" disabled>A4 (21 cm)</button>
+<button id="a4" disabled>📄 A4 (21 × 29,7 cm)</button>
 <button id="tl" disabled>1 TL (2,7 cm)</button>
 <button id="corners" disabled>Kumaş 4 köşe</button>
 <button id="measure" class="primary" disabled>📏 Ölç</button>
@@ -105,7 +105,10 @@ Kumaş köşelerini saat yönünde sırayla seçin. Fotoğraf ve ölçümler bu 
     say(name+" seçildi. Referansın iki ucuna sırayla dokunun.");
     draw();
   }
-  a4.addEventListener("click",()=>reference(21,"A4"));
+  a4.addEventListener("click",()=>{
+  const uzunKenar=confirm("A4'ün 29,7 cm olan uzun kenarını mı ölçeceksiniz?\n\nTamam = 29,7 cm\nİptal = 21 cm");
+  reference(uzunKenar?29.7:21,uzunKenar?"A4 uzun kenarı (29,7 cm)":"A4 kısa kenarı (21 cm)");
+});
   tl.addEventListener("click",()=>reference(2.615,"1 TL (26,15 mm)"));
 
   corners.addEventListener("click",()=>{
