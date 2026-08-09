@@ -3,305 +3,448 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#0f172a">
 <title>Kumaş Ölç PRO</title>
 
 <style>
 *{box-sizing:border-box}
 
 :root{
-  --bg:#eef1f5;
-  --card:#ffffff;
-  --text:#111827;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --dark:#111827;
-  --accent:#2563eb;
-  --accent2:#1d4ed8;
-  --danger:#dc2626;
-  --success:#059669;
+  --bg:#f1f5f9;
+  --card:#fff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --dark:#0f172a;
+  --blue:#2563eb;
+  --blue2:#1d4ed8;
+  --green:#059669;
+  --red:#dc2626;
+  --soft:#f8fafc;
 }
 
 body{
   margin:0;
-  background:linear-gradient(180deg,#eef2f7 0%,#f8fafc 100%);
+  background:
+    radial-gradient(circle at top,#dbeafe 0,#f1f5f9 35%,#f8fafc 100%);
   color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
 main{
-  width:min(100%,1050px);
+  width:min(1080px,100%);
   margin:auto;
-  padding:16px;
+  padding:12px;
 }
 
-.box{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
+.card{
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(226,232,240,.95);
+  border-radius:22px;
   padding:16px;
-  margin-bottom:14px;
-  box-shadow:0 8px 30px rgba(15,23,42,.07);
+  margin-bottom:13px;
+  box-shadow:0 10px 35px rgba(15,23,42,.07);
 }
 
 .header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.brand{
   display:flex;
   align-items:center;
   gap:12px;
 }
 
 .logo{
-  width:46px;
-  height:46px;
-  border-radius:14px;
+  width:50px;
+  height:50px;
+  border-radius:16px;
   display:grid;
   place-items:center;
-  background:#111827;
-  color:white;
-  font-size:23px;
+  background:linear-gradient(135deg,#0f172a,#334155);
+  color:#fff;
+  font-size:24px;
+  box-shadow:0 8px 18px rgba(15,23,42,.18);
 }
 
 h1{
   margin:0;
   font-size:22px;
-  letter-spacing:-.4px;
+  letter-spacing:-.5px;
 }
 
 .subtitle{
+  margin-top:3px;
   color:var(--muted);
   font-size:13px;
-  margin-top:3px;
 }
 
-.badge{
-  background:#eff6ff;
-  color:#1d4ed8;
-  border:1px solid #dbeafe;
-  border-radius:999px;
-  padding:7px 10px;
+.section-title{
+  margin:18px 0 8px;
+  color:#475569;
   font-size:11px;
-  font-weight:800;
-  white-space:nowrap;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.8px;
 }
 
-.actions{
-  display:flex;
-  flex-wrap:wrap;
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
   gap:8px;
-  margin-top:16px;
 }
 
-button,.pick{
-  appearance:none;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:11px 13px;
-  background:#f8fafc;
-  color:#111827;
-  font-size:14px;
-  font-weight:700;
+button,
+.file-button{
+  min-height:48px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  color:var(--text);
+  padding:10px 9px;
+  font-size:13px;
+  font-weight:800;
   cursor:pointer;
   transition:.15s ease;
+  box-shadow:0 2px 5px rgba(15,23,42,.04);
 }
 
-button:active,.pick:active{
-  transform:scale(.98);
-}
-
-button:hover,.pick:hover{
-  background:#f1f5f9;
+button:active,
+.file-button:active{
+  transform:scale(.97);
 }
 
 button:disabled{
-  opacity:.4;
+  opacity:.38;
   cursor:not-allowed;
 }
 
-.primary{
-  background:#111827;
-  border-color:#111827;
-  color:#fff;
+.file-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-.primary:hover{
-  background:#1f2937;
+.file-button input{
+  display:none;
+}
+
+.primary{
+  background:var(--dark);
+  color:#fff;
+  border-color:var(--dark);
 }
 
 .blue{
-  background:#2563eb;
-  border-color:#2563eb;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
   color:#fff;
+  border-color:var(--blue);
 }
 
-.blue:hover{
-  background:#1d4ed8;
+.green{
+  background:#ecfdf5;
+  color:#047857;
+  border-color:#a7f3d0;
+}
+
+.active{
+  background:#dbeafe!important;
+  color:#1d4ed8!important;
+  border-color:#93c5fd!important;
 }
 
 .danger{
   color:#b91c1c;
-}
-
-input{
-  display:none;
+  background:#fff7f7;
+  border-color:#fecaca;
 }
 
 .status{
   margin-top:13px;
-  padding:12px 13px;
-  border-radius:13px;
-  background:#f8fafc;
-  border:1px solid var(--border);
-  color:#374151;
-  font-size:14px;
-  line-height:1.45;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  background:var(--soft);
+  border-radius:14px;
+  color:#334155;
+  font-size:13px;
+  line-height:1.5;
 }
 
 .stage{
-  padding:10px;
-  background:#0b0f19;
+  background:#080b12;
   border-color:#111827;
+  padding:9px;
 }
 
 .canvas-wrap{
-  position:relative;
-  overflow:hidden;
-  border-radius:14px;
-  background:#05070b;
-  min-height:260px;
+  width:100%;
+  min-height:280px;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  border-radius:16px;
+  background:#020617;
+  position:relative;
 }
 
 canvas{
   display:block;
-  width:100%;
+  max-width:100%;
   height:auto;
   touch-action:none;
   user-select:none;
   -webkit-user-select:none;
 }
 
-.zoombar{
+.zoom-controls{
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   gap:7px;
-  margin-top:10px;
+  margin-top:9px;
 }
 
-.zoombar button{
-  min-width:44px;
-  padding:10px;
-  background:#1f2937;
-  border-color:#374151;
-  color:white;
+.zoom-controls button{
+  min-width:48px;
+  min-height:44px;
+  color:#fff;
+  background:#1e293b;
+  border-color:#334155;
 }
 
-.zoom-value{
-  min-width:76px;
-  text-align:center;
+.zoom-label{
+  min-width:70px;
   color:#fff;
   font-size:13px;
-  font-weight:800;
+  font-weight:900;
+  text-align:center;
 }
 
-.result{
-  font-size:17px;
-  line-height:1.7;
+.sensitivity{
+  margin-top:10px;
+  padding:11px 13px;
+  border-radius:14px;
+  background:#0f172a;
+  color:#cbd5e1;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.sensitivity b{
+  color:#fff;
+}
+
+.result-card{
+  background:linear-gradient(145deg,#0f172a,#1e293b);
+  color:#fff;
+  border:0;
 }
 
 .result-title{
-  font-size:13px;
-  font-weight:800;
-  color:var(--muted);
+  color:#94a3b8;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.8px;
   text-transform:uppercase;
-  letter-spacing:.5px;
-  margin-bottom:4px;
+}
+
+.result{
+  margin-top:6px;
+  font-size:16px;
+  line-height:1.7;
 }
 
 .result b{
   font-size:19px;
+  color:#fff;
 }
 
-.info-grid{
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:13px;
+}
+
+.metric{
+  padding:11px;
+  border-radius:14px;
+  background:rgba(255,255,255,.08);
+}
+
+.metric small{
+  display:block;
+  color:#94a3b8;
+  font-size:10px;
+  margin-bottom:4px;
+}
+
+.metric strong{
+  font-size:13px;
+}
+
+.history-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.history-head h2{
+  margin:0;
+  font-size:17px;
+}
+
+.history-list{
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.history-empty{
+  padding:18px;
+  border-radius:14px;
+  background:var(--soft);
+  color:var(--muted);
+  text-align:center;
+  font-size:13px;
+}
+
+.history-item{
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:12px;
+  background:#fff;
+}
+
+.history-top{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:8px;
+}
+
+.history-date{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.history-ref{
+  font-size:12px;
+  font-weight:900;
+}
+
+.history-values{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:9px;
-  margin-top:12px;
+  gap:7px;
 }
 
-.info{
-  padding:11px;
-  border:1px solid var(--border);
-  border-radius:13px;
-  background:#fafafa;
+.history-value{
+  background:#f8fafc;
+  border-radius:10px;
+  padding:8px;
 }
 
-.info strong{
+.history-value small{
   display:block;
-  font-size:12px;
   color:var(--muted);
-  margin-bottom:3px;
+  font-size:9px;
 }
 
-.info span{
-  font-size:14px;
+.history-value strong{
+  font-size:12px;
+}
+
+.history-delete{
+  margin-top:9px;
+  width:100%;
+  min-height:36px;
+  color:#b91c1c;
+  background:#fff7f7;
+  border-color:#fecaca;
+  font-size:11px;
+}
+
+.contact{
+  text-align:center;
+  margin:8px 0 18px;
+}
+
+.contact a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:12px 19px;
+  border-radius:15px;
+  background:#fff;
+  border:1px solid #e2e8f0;
+  color:#0f172a;
+  text-decoration:none;
+  font-size:13px;
   font-weight:800;
+  box-shadow:0 6px 18px rgba(15,23,42,.07);
+  transition:.15s ease;
+}
+
+.contact a:active{
+  transform:scale(.97);
 }
 
 .help{
-  color:#4b5563;
+  color:#475569;
   font-size:12px;
-  line-height:1.6;
+  line-height:1.65;
 }
 
 .footer{
   text-align:center;
-  color:#9ca3af;
-  font-size:11px;
-  padding:3px 0 12px;
+  color:#94a3b8;
+  font-size:10px;
+  padding:4px 0 10px;
 }
 
-@media(max-width:650px){
+@media(max-width:760px){
+
+  .buttons{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .metrics{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:430px){
+
   main{
-    padding:10px;
+    padding:9px;
   }
 
-  .box{
-    padding:13px;
-    border-radius:17px;
-  }
-
-  .header{
-    align-items:flex-start;
-  }
-
-  .badge{
-    display:none;
+  .card{
+    padding:12px;
+    border-radius:18px;
   }
 
   h1{
     font-size:20px;
   }
 
-  button,.pick{
-    flex:1 1 calc(50% - 8px);
-    text-align:center;
-    padding:12px 8px;
-    font-size:13px;
+  .buttons{
+    gap:7px;
   }
 
-  .info-grid{
-    grid-template-columns:1fr;
+  button,
+  .file-button{
+    min-height:48px;
+    font-size:12px;
   }
+
 }
 </style>
 </head>
@@ -310,45 +453,94 @@ canvas{
 
 <main>
 
-<section class="box">
+<section class="card">
 
   <div class="header">
-    <div class="brand">
-      <div class="logo">📐</div>
-      <div>
-        <h1>Kumaş Ölç PRO</h1>
-        <div class="subtitle">Fotoğraf → kalibrasyon → köşe seçimi → ölçüm</div>
+
+    <div class="logo">📐</div>
+
+    <div>
+      <h1>Kumaş Ölç PRO</h1>
+      <div class="subtitle">
+        Hassas fotoğraf ölçüm ve alan hesaplama
       </div>
     </div>
 
-    <div class="badge">PRO ÖLÇÜM</div>
   </div>
 
-  <div class="actions">
+  <div class="section-title">Fotoğraf</div>
 
-    <label class="pick primary">
-      🖼️ Fotoğraf yükle
+  <div class="buttons">
+
+    <label class="file-button primary">
+      🖼️ Fotoğraf Yükle
       <input id="gallery" type="file" accept="image/*">
     </label>
 
-    <label class="pick">
+    <label class="file-button">
       📷 Kamera
       <input id="camera" type="file" accept="image/*" capture="environment">
     </label>
 
-    <button id="a4" disabled>📄 A4 21 × 29,7 cm</button>
+  </div>
 
-    <button id="tl" disabled>🪙 1 TL 26,15 mm</button>
+  <div class="section-title">Referans</div>
 
-    <button id="corners" disabled>◈ 4 Köşe</button>
+  <div class="buttons">
 
-    <button id="measure" class="blue" disabled>📏 Ölç</button>
+    <button id="tl" disabled>
+      🪙 1 TL
+      <br>
+      <small>26,15 mm</small>
+    </button>
 
-    <button id="undo" disabled>↩️ Geri Al</button>
+    <button id="a4short" disabled>
+      📄 A4 Kısa
+      <br>
+      <small>21 cm</small>
+    </button>
 
-    <button id="redo" disabled>↪️ İleri Al</button>
+    <button id="a4long" disabled>
+      📄 A4 Uzun
+      <br>
+      <small>29,7 cm</small>
+    </button>
 
-    <button id="clear" class="danger">🗑️ Sıfırla</button>
+  </div>
+
+  <div class="section-title">Ölçüm</div>
+
+  <div class="buttons">
+
+    <button id="precision" class="green" disabled>
+      🎯 Hassas Mod
+    </button>
+
+    <button id="corners" disabled>
+      ◈ 4 Köşe
+    </button>
+
+    <button id="measure" class="blue" disabled>
+      📏 Ölç
+    </button>
+
+    <button id="clear" class="danger">
+      🗑️ Sıfırla
+    </button>
+
+  </div>
+
+  <div class="section-title">Düzenleme</div>
+
+  <div class="buttons">
+
+    <button id="undo" disabled>
+      ↩️ Geri Al
+    </button>
+
+    <button id="redo" disabled>
+      ↪️ İleri Al
+    </button>
 
   </div>
 
@@ -359,157 +551,437 @@ canvas{
 </section>
 
 
-<section class="box stage">
+<section class="card stage">
 
-  <div class="canvas-wrap">
-    <canvas id="c"></canvas>
+  <div class="canvas-wrap" id="canvasWrap">
+    <canvas id="canvas"></canvas>
   </div>
 
-  <div class="zoombar">
+  <div class="zoom-controls">
+
     <button id="zoomOut" disabled>−</button>
-    <div id="zoomValue" class="zoom-value">100%</div>
+
+    <div id="zoomLabel" class="zoom-label">
+      100%
+    </div>
+
     <button id="zoomIn" disabled>+</button>
-    <button id="zoomReset" disabled>↺</button>
+
+    <button id="zoomReset" disabled>
+      ↺
+    </button>
+
   </div>
 
-</section>
+  <div class="sensitivity">
 
+    <span>
+      Hassas Mod:
+      <b id="precisionText">Kapalı</b>
+    </span>
 
-<section class="box result">
-
-  <div class="result-title">Ölçüm sonucu</div>
-
-  <div id="result">
-    Sonuç: —
-  </div>
-
-  <div class="info-grid">
-
-    <div class="info">
-      <strong>Referans</strong>
-      <span id="refInfo">—</span>
-    </div>
-
-    <div class="info">
-      <strong>Zoom</strong>
-      <span id="zoomInfo">100%</span>
-    </div>
-
-    <div class="info">
-      <strong>Nokta</strong>
-      <span id="pointInfo">0 / 4</span>
-    </div>
+    <span>
+      Nokta:
+      <b id="pointText">0 / 4</b>
+    </span>
 
   </div>
 
 </section>
 
 
-<section class="box help">
+<section class="card result-card">
 
-  <b>Doğru kullanım</b><br>
+  <div class="result-title">
+    Ölçüm Sonucu
+  </div>
 
-  A4 veya 1 TL, kumaşla aynı düzlemde olmalıdır.
-  Referansın iki ucunu mümkün olduğunca doğru seçin.
-  Kumaş köşelerini saat yönünde 1 → 2 → 3 → 4 şeklinde seçin.
+  <div id="result" class="result">
+    Henüz ölçüm yapılmadı.
+  </div>
+
+  <div class="metrics">
+
+    <div class="metric">
+      <small>Referans</small>
+      <strong id="referenceInfo">—</strong>
+    </div>
+
+    <div class="metric">
+      <small>Kenar 1</small>
+      <strong id="edge1">—</strong>
+    </div>
+
+    <div class="metric">
+      <small>Kenar 2</small>
+      <strong id="edge2">—</strong>
+    </div>
+
+    <div class="metric">
+      <small>Nokta</small>
+      <strong id="pointInfo">0 / 4</strong>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="card">
+
+  <div class="history-head">
+
+    <h2>📋 Ölçüm Geçmişi</h2>
+
+    <button id="clearHistory" class="danger">
+      Geçmişi Temizle
+    </button>
+
+  </div>
+
+  <div id="historyList" class="history-list">
+
+    <div class="history-empty">
+      Henüz kayıtlı ölçüm yok.
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="card help">
+
+  <b>Nasıl kullanılır?</b>
 
   <br><br>
 
-  <b>Hassas seçim:</b>
-  Küçük noktaları daha rahat seçmek için
-  <b>+</b> ve <b>−</b> zoom düğmelerini kullanabilirsiniz.
-  Yanlış seçimlerde <b>Geri Al</b> ve <b>İleri Al</b> kullanılabilir.
+  <b>1.</b> Fotoğrafı yükle veya kameradan çek.
+
+  <br>
+
+  <b>2.</b> Referans olarak 1 TL veya A4 seç.
+
+  <br>
+
+  <b>3.</b> Referansın iki ucuna dokun.
+
+  <br>
+
+  <b>4.</b> 🎯 Hassas Mod ile noktayı daha rahat yerleştir.
+
+  <br>
+
+  <b>5.</b> 🤏 Fotoğrafı iki parmakla büyüt veya küçült.
+
+  <br>
+
+  <b>6.</b> ◈ 4 Köşe'ye bas ve kumaşın köşelerini sırayla seç.
+
+  <br>
+
+  <b>7.</b> 📏 Öl düğmesine bas.
 
   <br><br>
 
-  Fotoğraf ve ölçümler cihazınızın tarayıcısında yerel olarak işlenir.
+  <b>Referanslar:</b><br>
+  1 TL = 26,15 mm<br>
+  A4 kısa kenar = 21 cm<br>
+  A4 uzun kenar = 29,7 cm
 
 </section>
+
+
+<div class="contact">
+
+  <a
+    href="https://instagram.com/peqer_serdarr"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram'dan bize ulaşın"
+  >
+
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+
+      <defs>
+
+        <linearGradient
+          id="instagramGradient"
+          x1="0%"
+          y1="100%"
+          x2="100%"
+          y2="0%"
+        >
+
+          <stop
+            offset="0%"
+            stop-color="#ffdc80"
+          />
+
+          <stop
+            offset="25%"
+            stop-color="#fcaf45"
+          />
+
+          <stop
+            offset="55%"
+            stop-color="#f77737"
+          />
+
+          <stop
+            offset="75%"
+            stop-color="#e1306c"
+          />
+
+          <stop
+            offset="100%"
+            stop-color="#833ab4"
+          />
+
+        </linearGradient>
+
+      </defs>
+
+
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        fill="none"
+        stroke="url(#instagramGradient)"
+        stroke-width="2"
+      />
+
+
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+        fill="none"
+        stroke="url(#instagramGradient)"
+        stroke-width="2"
+      />
+
+
+      <circle
+        cx="17.5"
+        cy="6.5"
+        r="1.1"
+        fill="#e1306c"
+      />
+
+    </svg>
+
+    Instagram'dan Bize Ulaşın
+
+  </a>
+
+</div>
+
 
 <div class="footer">
-  Kumaş Ölç PRO • Serdar Peker
+  Kumaş Ölç PRO • Hassas Ölçüm
 </div>
 
 </main>
 
 
 <script>
+
 "use strict";
 
 (() => {
 
-  const $ = id => document.getElementById(id);
+  const $ = id =>
+    document.getElementById(id);
 
-  const canvas = $("c");
-  const ctx = canvas.getContext("2d", {alpha:false});
+  const canvas =
+    $("canvas");
 
-  const gallery = $("gallery");
-  const camera = $("camera");
+  const ctx =
+    canvas.getContext("2d");
 
-  const a4 = $("a4");
-  const tl = $("tl");
-  const corners = $("corners");
-  const measure = $("measure");
+  const gallery =
+    $("gallery");
 
-  const undo = $("undo");
-  const redo = $("redo");
-  const clear = $("clear");
+  const camera =
+    $("camera");
 
-  const zoomIn = $("zoomIn");
-  const zoomOut = $("zoomOut");
-  const zoomReset = $("zoomReset");
+  const tl =
+    $("tl");
 
-  const status = $("status");
-  const result = $("result");
+  const a4short =
+    $("a4short");
 
-  const zoomValue = $("zoomValue");
-  const zoomInfo = $("zoomInfo");
-  const pointInfo = $("pointInfo");
-  const refInfo = $("refInfo");
+  const a4long =
+    $("a4long");
+
+  const precision =
+    $("precision");
+
+  const corners =
+    $("corners");
+
+  const measure =
+    $("measure");
+
+  const undo =
+    $("undo");
+
+  const redo =
+    $("redo");
+
+  const clear =
+    $("clear");
+
+  const zoomIn =
+    $("zoomIn");
+
+  const zoomOut =
+    $("zoomOut");
+
+  const zoomReset =
+    $("zoomReset");
+
+  const status =
+    $("status");
+
+  const result =
+    $("result");
+
+  const precisionText =
+    $("precisionText");
+
+  const pointText =
+    $("pointText");
+
+  const pointInfo =
+    $("pointInfo");
+
+  const referenceInfo =
+    $("referenceInfo");
+
+  const edge1 =
+    $("edge1");
+
+  const edge2 =
+    $("edge2");
+
+  const historyList =
+    $("historyList");
+
+  const clearHistory =
+    $("clearHistory");
 
 
   let img = null;
 
-  let pts = [];
+  let points = [];
 
   let mode = null;
 
-  let refCm = 0;
+  let referenceCm = 0;
 
   let scale = 0;
 
   let zoom = 1;
 
+  let panX = 0;
+
+  let panY = 0;
+
+  let precisionMode = false;
+
+
   let history = [];
 
   let historyIndex = -1;
 
-  let lastZoomPoint = null;
+
+  let pointers = new Map();
+
+  let pinchStartDistance = 0;
+
+  let pinchStartZoom = 1;
 
 
-  const say = text => {
-    status.textContent = text;
-  };
-
-
-  const dist = (a,b) => {
-    return Math.hypot(
-      a.x-b.x,
-      a.y-b.y
+  let historyMeasurements =
+    JSON.parse(
+      localStorage.getItem(
+        "kumasOlcProHistory"
+      ) || "[]"
     );
-  };
+
+
+  function say(text){
+
+    status.textContent =
+      text;
+
+  }
+
+
+  function distance(a,b){
+
+    return Math.hypot(
+      a.x - b.x,
+      a.y - b.y
+    );
+
+  }
+
+
+  function clamp(
+    value,
+    min,
+    max
+  ){
+
+    return Math.max(
+      min,
+      Math.min(
+        max,
+        value
+      )
+    );
+
+  }
 
 
   function snapshot(){
 
     return {
-      pts: pts.map(p => ({
-        x:p.x,
-        y:p.y
-      })),
+
+      points:
+        points.map(
+          p => ({
+            x:p.x,
+            y:p.y
+          })
+        ),
+
       mode,
-      refCm,
-      scale
+
+      referenceCm,
+
+      scale,
+
+      zoom,
+
+      panX,
+
+      panY,
+
+      precisionMode
+
     };
 
   }
@@ -517,45 +989,57 @@ canvas{
 
   function restore(state){
 
-    pts = state.pts.map(p => ({
-      x:p.x,
-      y:p.y
-    }));
+    points =
+      state.points.map(
+        p => ({
+          x:p.x,
+          y:p.y
+        })
+      );
 
-    mode = state.mode;
+    mode =
+      state.mode;
 
-    refCm = state.refCm;
+    referenceCm =
+      state.referenceCm;
 
-    scale = state.scale;
+    scale =
+      state.scale;
+
+    zoom =
+      state.zoom || 1;
+
+    panX =
+      state.panX || 0;
+
+    panY =
+      state.panY || 0;
+
+    precisionMode =
+      !!state.precisionMode;
 
     draw();
 
-    updateButtons();
-
-  }
-
-
-  function resetHistory(){
-
-    history = [snapshot()];
-
-    historyIndex = 0;
+    updateUI();
 
   }
 
 
   function saveHistory(){
 
-    history = history.slice(
-      0,
-      historyIndex + 1
-    );
+    history =
+      history.slice(
+        0,
+        historyIndex + 1
+      );
 
-    history.push(snapshot());
+    history.push(
+      snapshot()
+    );
 
     historyIndex++;
 
-    updateButtons();
+    updateUI();
 
   }
 
@@ -564,34 +1048,148 @@ canvas{
 
     if(historyIndex <= 0){
 
-      say("Geri alınacak işlem yok.");
+      say(
+        "Geri alınacak işlem yok."
+      );
 
       return;
+
     }
 
     historyIndex--;
 
-    restore(history[historyIndex]);
+    restore(
+      history[historyIndex]
+    );
 
-    say("Son işlem geri alındı.");
+    say(
+      "Son işlem geri alındı."
+    );
 
   }
 
 
   function redoAction(){
 
-    if(historyIndex >= history.length-1){
+    if(
+      historyIndex < 0 ||
+      historyIndex >= history.length - 1
+    ){
 
-      say("İleri alınacak işlem yok.");
+      say(
+        "İleri alınacak işlem yok."
+      );
 
       return;
+
     }
 
     historyIndex++;
 
-    restore(history[historyIndex]);
+    restore(
+      history[historyIndex]
+    );
 
-    say("Son işlem ileri alındı.");
+    say(
+      "Son işlem ileri alındı."
+    );
+
+  }
+
+
+  function updateUI(){
+
+    const hasImage =
+      !!img;
+
+
+    tl.disabled =
+      !hasImage;
+
+    a4short.disabled =
+      !hasImage;
+
+    a4long.disabled =
+      !hasImage;
+
+    precision.disabled =
+      !hasImage;
+
+    corners.disabled =
+      !hasImage ||
+      !scale;
+
+    measure.disabled =
+      !hasImage ||
+      !scale ||
+      points.length !== 4;
+
+    zoomIn.disabled =
+      !hasImage;
+
+    zoomOut.disabled =
+      !hasImage;
+
+    zoomReset.disabled =
+      !hasImage;
+
+
+    undo.disabled =
+      historyIndex <= 0;
+
+    redo.disabled =
+      historyIndex < 0 ||
+      historyIndex >= history.length - 1;
+
+
+    $("zoomLabel").textContent =
+      Math.round(
+        zoom * 100
+      ) + "%";
+
+
+    pointText.textContent =
+      points.length +
+      " / 4";
+
+    pointInfo.textContent =
+      points.length +
+      " / 4";
+
+
+    precisionText.textContent =
+      precisionMode
+        ? "Açık"
+        : "Kapalı";
+
+
+    precision.classList.toggle(
+      "active",
+      precisionMode
+    );
+
+
+    if(referenceCm === 2.615){
+
+      referenceInfo.textContent =
+        "1 TL";
+
+    }else if(referenceCm === 21){
+
+      referenceInfo.textContent =
+        "A4 • 21 cm";
+
+    }else if(referenceCm === 29.7){
+
+      referenceInfo.textContent =
+        "A4 • 29,7 cm";
+
+    }else{
+
+      referenceInfo.textContent =
+        "—";
+
+    }
 
   }
 
@@ -600,23 +1198,34 @@ canvas{
 
     img = null;
 
-    pts = [];
+    points = [];
 
     mode = null;
 
-    refCm = 0;
+    referenceCm = 0;
 
     scale = 0;
 
     zoom = 1;
 
-    lastZoomPoint = null;
+    panX = 0;
+
+    panY = 0;
+
+    precisionMode = false;
+
+    history = [];
+
+    historyIndex = -1;
+
 
     canvas.width = 2;
 
     canvas.height = 2;
 
-    ctx.fillStyle = "#111";
+
+    ctx.fillStyle =
+      "#111827";
 
     ctx.fillRect(
       0,
@@ -625,84 +1234,23 @@ canvas{
       2
     );
 
-    result.textContent = "Sonuç: —";
 
-    refInfo.textContent = "—";
+    result.textContent =
+      "Henüz ölçüm yapılmadı.";
 
-    zoomInfo.textContent = "100%";
+    edge1.textContent =
+      "—";
 
-    zoomValue.textContent = "100%";
-
-    pointInfo.textContent = "0 / 4";
-
-    a4.disabled = true;
-
-    tl.disabled = true;
-
-    corners.disabled = true;
-
-    measure.disabled = true;
-
-    zoomIn.disabled = true;
-
-    zoomOut.disabled = true;
-
-    zoomReset.disabled = true;
-
-    undo.disabled = true;
-
-    redo.disabled = true;
-
-    history = [];
-
-    historyIndex = -1;
-
-    say("Fotoğraf yükleyerek başlayın.");
-
-  }
+    edge2.textContent =
+      "—";
 
 
-  function updateButtons(){
+    say(
+      "Fotoğraf yükleyerek başlayın."
+    );
 
-    const hasImage = !!img;
 
-    a4.disabled = !hasImage;
-
-    tl.disabled = !hasImage;
-
-    corners.disabled = !hasImage || !scale;
-
-    measure.disabled = pts.length !== 4 || !scale;
-
-    zoomIn.disabled = !hasImage;
-
-    zoomOut.disabled = !hasImage;
-
-    zoomReset.disabled = !hasImage;
-
-    undo.disabled = historyIndex <= 0;
-
-    redo.disabled =
-      historyIndex < 0 ||
-      historyIndex >= history.length-1;
-
-    pointInfo.textContent =
-      pts.length + " / 4";
-
-    zoomValue.textContent =
-      Math.round(zoom * 100) + "%";
-
-    zoomInfo.textContent =
-      Math.round(zoom * 100) + "%";
-
-    if(scale && refCm){
-
-      refInfo.textContent =
-        refCm === 2.615
-          ? "1 TL • 26,15 mm"
-          : "A4 • " + refCm + " cm";
-
-    }
+    updateUI();
 
   }
 
@@ -712,89 +1260,133 @@ canvas{
     if(!file){
 
       return;
+
     }
+
 
     if(
       !file.type ||
       !file.type.startsWith("image/")
     ){
 
-      say("Seçilen dosya bir fotoğraf değil.");
+      say(
+        "Seçilen dosya bir fotoğraf değil."
+      );
 
       return;
+
     }
 
-    const url = URL.createObjectURL(file);
 
-    const im = new Image();
+    const url =
+      URL.createObjectURL(file);
 
-    im.onload = () => {
+    const image =
+      new Image();
 
-      img = im;
 
-      const maxW = 1400;
+    image.onload = () => {
 
-      const maxH = 1000;
+      img = image;
 
-      const s = Math.min(
-        1,
-        maxW / im.naturalWidth,
-        maxH / im.naturalHeight
-      );
+
+      const maxW = 1600;
+
+      const maxH = 1100;
+
+
+      const ratio =
+        Math.min(
+          1,
+          maxW / image.naturalWidth,
+          maxH / image.naturalHeight
+        );
+
 
       canvas.width =
         Math.max(
           2,
-          Math.round(im.naturalWidth * s)
+          Math.round(
+            image.naturalWidth * ratio
+          )
         );
+
 
       canvas.height =
         Math.max(
           2,
-          Math.round(im.naturalHeight * s)
+          Math.round(
+            image.naturalHeight * ratio
+          )
         );
 
-      pts = [];
+
+      points = [];
 
       mode = null;
 
-      refCm = 0;
+      referenceCm = 0;
 
       scale = 0;
 
       zoom = 1;
 
-      lastZoomPoint = null;
+      panX = 0;
 
-      result.textContent = "Sonuç: —";
+      panY = 0;
 
-      refInfo.textContent = "—";
+      precisionMode = false;
+
+
+      result.textContent =
+        "Henüz ölçüm yapılmadı.";
+
+      edge1.textContent =
+        "—";
+
+      edge2.textContent =
+        "—";
+
+
+      history = [];
+
+      historyIndex = -1;
+
 
       draw();
 
-      resetHistory();
+      saveHistory();
 
-      updateButtons();
 
       say(
-        "Fotoğraf hazır. A4 veya 1 TL ile kalibre edin."
+        "Fotoğraf hazır. Referans seçin."
       );
 
-      URL.revokeObjectURL(url);
+
+      updateUI();
+
+
+      URL.revokeObjectURL(
+        url
+      );
 
     };
 
-    im.onerror = () => {
+
+    image.onerror = () => {
 
       say(
-        "Fotoğraf açılamadı. Başka bir fotoğraf deneyin."
+        "Fotoğraf açılamadı."
       );
 
-      URL.revokeObjectURL(url);
+      URL.revokeObjectURL(
+        url
+      );
 
     };
 
-    im.src = url;
+
+    image.src = url;
 
   }
 
@@ -827,66 +1419,113 @@ canvas{
   );
 
 
-  function reference(cm,name){
+  function selectReference(
+    cm,
+    label
+  ){
 
     if(!img){
 
       return;
+
     }
 
-    pts = [];
 
-    mode = "ref";
+    points = [];
 
-    refCm = cm;
+    mode = "reference";
+
+    referenceCm = cm;
 
     scale = 0;
 
-    result.textContent = "Sonuç: —";
+
+    result.textContent =
+      "Henüz ölçüm yapılmadı.";
+
+    edge1.textContent =
+      "—";
+
+    edge2.textContent =
+      "—";
+
 
     saveHistory();
 
+
     say(
-      name +
-      " seçildi. Referansın iki ucuna sırayla dokunun."
+      label +
+      " seçildi. İki ucuna sırayla dokunun."
     );
+
 
     draw();
 
-    updateButtons();
+    updateUI();
 
   }
-
-
-  a4.addEventListener(
-    "click",
-    () => {
-
-      const longEdge = confirm(
-        "A4'ün 29,7 cm olan uzun kenarını mı ölçeceksiniz?\n\n" +
-        "Tamam = 29,7 cm\n" +
-        "İptal = 21 cm"
-      );
-
-      reference(
-        longEdge ? 29.7 : 21,
-        longEdge
-          ? "A4 uzun kenarı (29,7 cm)"
-          : "A4 kısa kenarı (21 cm)"
-      );
-
-    }
-  );
 
 
   tl.addEventListener(
     "click",
     () => {
 
-      reference(
+      selectReference(
         2.615,
         "1 TL (26,15 mm)"
       );
+
+    }
+  );
+
+
+  a4short.addEventListener(
+    "click",
+    () => {
+
+      selectReference(
+        21,
+        "A4 kısa kenarı (21 cm)"
+      );
+
+    }
+  );
+
+
+  a4long.addEventListener(
+    "click",
+    () => {
+
+      selectReference(
+        29.7,
+        "A4 uzun kenarı (29,7 cm)"
+      );
+
+    }
+  );
+
+
+  precision.addEventListener(
+    "click",
+    () => {
+
+      precisionMode =
+        !precisionMode;
+
+
+      saveHistory();
+
+
+      say(
+        precisionMode
+          ? "Hassas Mod açık."
+          : "Hassas Mod kapalı."
+      );
+
+
+      draw();
+
+      updateUI();
 
     }
   );
@@ -899,48 +1538,88 @@ canvas{
       if(!scale){
 
         say(
-          "Önce A4 veya 1 TL ile kalibrasyon yapın."
+          "Önce referans ile kalibrasyon yapın."
         );
 
         return;
+
       }
 
-      pts = [];
+
+      points = [];
 
       mode = "fabric";
 
-      measure.disabled = true;
 
       saveHistory();
 
+
       say(
-        "Kumaşın 4 köşesine sırayla dokunun: 1 → 2 → 3 → 4."
+        "Kumaşın 4 köşesini sırayla seçin."
       );
+
 
       draw();
 
-      updateButtons();
+      updateUI();
 
     }
   );
 
 
-  function canvasPoint(e){
+  function screenToCanvas(
+    clientX,
+    clientY
+  ){
 
-    const r =
+    const rect =
       canvas.getBoundingClientRect();
+
+
+    let x =
+      (clientX - rect.left) *
+      canvas.width /
+      rect.width;
+
+
+    let y =
+      (clientY - rect.top) *
+      canvas.height /
+      rect.height;
+
+
+    const cx =
+      canvas.width / 2;
+
+    const cy =
+      canvas.height / 2;
+
+
+    x =
+      (x - cx - panX) /
+      zoom +
+      cx;
+
+
+    y =
+      (y - cy - panY) /
+      zoom +
+      cy;
+
 
     return {
 
-      x:
-        (e.clientX - r.left) *
-        canvas.width /
-        r.width,
+      x:clamp(
+        x,
+        0,
+        canvas.width
+      ),
 
-      y:
-        (e.clientY - r.top) *
-        canvas.height /
-        r.height
+      y:clamp(
+        y,
+        0,
+        canvas.height
+      )
 
     };
 
@@ -951,7 +1630,8 @@ canvas{
 
     if(!img){
 
-      ctx.fillStyle = "#111";
+      ctx.fillStyle =
+        "#111827";
 
       ctx.fillRect(
         0,
@@ -961,16 +1641,45 @@ canvas{
       );
 
       return;
+
     }
 
-    ctx.setTransform(
-      zoom,
+
+    ctx.clearRect(
       0,
       0,
-      zoom,
-      canvas.width * (1-zoom)/2,
-      canvas.height * (1-zoom)/2
+      canvas.width,
+      canvas.height
     );
+
+
+    ctx.save();
+
+
+    const cx =
+      canvas.width / 2;
+
+    const cy =
+      canvas.height / 2;
+
+
+    ctx.translate(
+      cx + panX,
+      cy + panY
+    );
+
+
+    ctx.scale(
+      zoom,
+      zoom
+    );
+
+
+    ctx.translate(
+      -cx,
+      -cy
+    );
+
 
     ctx.drawImage(
       img,
@@ -980,130 +1689,155 @@ canvas{
       canvas.height
     );
 
-    ctx.setTransform(1,0,0,1,0,0);
+
+    if(points.length){
+
+      const lineWidth =
+        Math.max(
+          2,
+          canvas.width / 500
+        ) / zoom;
 
 
-    if(!pts.length){
+      ctx.lineWidth =
+        lineWidth;
 
-      return;
-    }
+      ctx.strokeStyle =
+        "#ff3158";
 
-
-    const offsetX =
-      canvas.width * (1-zoom)/2;
-
-    const offsetY =
-      canvas.height * (1-zoom)/2;
+      ctx.fillStyle =
+        "#ff3158";
 
 
-    ctx.save();
-
-    ctx.translate(
-      offsetX,
-      offsetY
-    );
-
-    ctx.scale(
-      zoom,
-      zoom
-    );
+      ctx.beginPath();
 
 
-    ctx.lineWidth =
-      Math.max(
-        2 / zoom,
-        canvas.width / 500 / zoom
+      ctx.moveTo(
+        points[0].x,
+        points[0].y
       );
 
-    ctx.strokeStyle = "#ff2d55";
 
-    ctx.beginPath();
+      for(
+        let i=1;
+        i<points.length;
+        i++
+      ){
 
-    ctx.moveTo(
-      pts[0].x,
-      pts[0].y
-    );
-
-    for(
-      let i=1;
-      i<pts.length;
-      i++
-    ){
-
-      ctx.lineTo(
-        pts[i].x,
-        pts[i].y
-      );
-
-    }
-
-    if(pts.length === 4){
-
-      ctx.closePath();
-
-    }
-
-    ctx.stroke();
-
-
-    pts.forEach(
-      (p,i) => {
-
-        ctx.beginPath();
-
-        ctx.arc(
-          p.x,
-          p.y,
-          Math.max(
-            6,
-            canvas.width / 100 / zoom
-          ),
-          0,
-          Math.PI * 2
-        );
-
-        ctx.fillStyle = "#ff2d55";
-
-        ctx.fill();
-
-        ctx.fillStyle = "#fff";
-
-        ctx.font =
-          "bold 14px sans-serif";
-
-        ctx.fillText(
-          String(i+1),
-          p.x + 9/zoom,
-          p.y - 9/zoom
+        ctx.lineTo(
+          points[i].x,
+          points[i].y
         );
 
       }
-    );
+
+
+      if(points.length === 4){
+
+        ctx.closePath();
+
+      }
+
+
+      ctx.stroke();
+
+
+      points.forEach(
+        (p,index) => {
+
+          const radius =
+            precisionMode
+              ? 5 / zoom
+              : 8 / zoom;
+
+
+          ctx.beginPath();
+
+          ctx.arc(
+            p.x,
+            p.y,
+            radius,
+            0,
+            Math.PI * 2
+          );
+
+          ctx.fill();
+
+
+          ctx.fillStyle =
+            "#fff";
+
+
+          ctx.font =
+            "bold " +
+            Math.max(
+              13,
+              canvas.width / 90
+            ) /
+            zoom +
+            "px sans-serif";
+
+
+          ctx.fillText(
+            String(index + 1),
+            p.x + 10 / zoom,
+            p.y - 10 / zoom
+          );
+
+
+          ctx.fillStyle =
+            "#ff3158";
+
+        }
+      );
+
+    }
+
 
     ctx.restore();
 
   }
 
 
-  function zoomTo(value){
+  function setZoom(
+    newZoom,
+    centerX =
+      canvas.width / 2,
+    centerY =
+      canvas.height / 2
+  ){
 
-    if(!img){
+    const oldZoom =
+      zoom;
 
-      return;
-    }
+
+    const factor =
+      newZoom / oldZoom;
+
+
+    panX =
+      centerX -
+      factor *
+      (centerX - panX);
+
+
+    panY =
+      centerY -
+      factor *
+      (centerY - panY);
+
 
     zoom =
-      Math.max(
+      clamp(
+        newZoom,
         1,
-        Math.min(
-          4,
-          value
-        )
+        5
       );
+
 
     draw();
 
-    updateButtons();
+    updateUI();
 
   }
 
@@ -1112,13 +1846,8 @@ canvas{
     "click",
     () => {
 
-      zoomTo(
-        zoom + 0.25
-      );
-
-      say(
-        "Zoom % " +
-        Math.round(zoom*100)
+      setZoom(
+        zoom + .25
       );
 
     }
@@ -1129,13 +1858,8 @@ canvas{
     "click",
     () => {
 
-      zoomTo(
-        zoom - 0.25
-      );
-
-      say(
-        "Zoom % " +
-        Math.round(zoom*100)
+      setZoom(
+        zoom - .25
       );
 
     }
@@ -1146,9 +1870,15 @@ canvas{
     "click",
     () => {
 
-      zoomTo(1);
+      zoom = 1;
 
-      say("Zoom sıfırlandı.");
+      panX = 0;
+
+      panY = 0;
+
+      draw();
+
+      updateUI();
 
     }
   );
@@ -1158,102 +1888,145 @@ canvas{
     "pointerdown",
     e => {
 
-      if(!img || !mode){
+      pointers.set(
+        e.pointerId,
+        {
+          x:e.clientX,
+          y:e.clientY
+        }
+      );
+
+
+      if(pointers.size === 2){
+
+        const values =
+          [...pointers.values()];
+
+
+        pinchStartDistance =
+          Math.hypot(
+            values[0].x -
+            values[1].x,
+            values[0].y -
+            values[1].y
+          );
+
+
+        pinchStartZoom =
+          zoom;
+
 
         return;
+
       }
 
-      e.preventDefault();
 
-      const p = canvasPoint(e);
+      if(
+        !img ||
+        !mode
+      ){
 
-      lastZoomPoint = p;
+        return;
 
-      if(mode === "ref"){
+      }
 
-        pts.push(p);
 
-        draw();
+      const point =
+        screenToCanvas(
+          e.clientX,
+          e.clientY
+        );
 
-        updateButtons();
 
-        if(pts.length === 2){
+      points.push(point);
+
+
+      draw();
+
+      updateUI();
+
+
+      if(mode === "reference"){
+
+        if(points.length === 1){
+
+          saveHistory();
+
+          say(
+            "Şimdi ikinci referans noktasını seçin."
+          );
+
+          return;
+
+        }
+
+
+        if(points.length === 2){
 
           const px =
-            dist(
-              pts[0],
-              pts[1]
+            distance(
+              points[0],
+              points[1]
             );
 
-          if(
-            px <
-            Math.max(
-              8,
-              canvas.width * .01
-            )
-          ){
 
-            pts.pop();
+          if(px < 5){
+
+            points.pop();
 
             draw();
 
             say(
-              "Referans noktaları çok yakın. Tekrar seçin."
+              "Noktalar çok yakın. Tekrar seçin."
             );
 
             return;
 
           }
 
+
           scale =
-            refCm / px;
+            referenceCm / px;
+
 
           mode = null;
 
-          corners.disabled = false;
 
           saveHistory();
 
-          say(
-            "Kalibrasyon tamam. Şimdi '4 Köşe' düğmesine basın."
-          );
-
-          updateButtons();
-
-        }else{
-
-          saveHistory();
 
           say(
-            "İkinci referans noktasını seçin."
+            "Kalibrasyon tamamlandı. Şimdi 4 Köşe'ye basın."
           );
+
+
+          updateUI();
+
+          return;
 
         }
 
       }
 
 
-      else if(mode === "fabric"){
-
-        pts.push(p);
-
-        draw();
-
-        updateButtons();
+      if(mode === "fabric"){
 
         saveHistory();
 
-        if(pts.length === 4){
+
+        if(points.length === 4){
 
           mode = null;
 
-          measure.disabled = false;
+          saveHistory();
+
 
           say(
-            "4 köşe seçildi. Ölç düğmesine basın."
+            "4 köşe tamamlandı. Ölç düğmesine basın."
           );
 
-          updateButtons();
+
+          updateUI();
 
         }
 
@@ -1263,80 +2036,158 @@ canvas{
   );
 
 
+  canvas.addEventListener(
+    "pointermove",
+    e => {
+
+      if(!pointers.has(e.pointerId)){
+
+        return;
+
+      }
+
+
+      pointers.set(
+        e.pointerId,
+        {
+          x:e.clientX,
+          y:e.clientY
+        }
+      );
+
+
+      if(pointers.size === 2){
+
+        const values =
+          [...pointers.values()];
+
+
+        const currentDistance =
+          Math.hypot(
+            values[0].x -
+            values[1].x,
+            values[0].y -
+            values[1].y
+          );
+
+
+        if(
+          pinchStartDistance > 0
+        ){
+
+          const ratio =
+            currentDistance /
+            pinchStartDistance;
+
+
+          setZoom(
+            pinchStartZoom *
+            ratio
+          );
+
+        }
+
+      }
+
+    }
+  );
+
+
+  function removePointer(e){
+
+    pointers.delete(
+      e.pointerId
+    );
+
+  }
+
+
+  canvas.addEventListener(
+    "pointerup",
+    removePointer
+  );
+
+  canvas.addEventListener(
+    "pointercancel",
+    removePointer
+  );
+
+
   measure.addEventListener(
     "click",
     () => {
 
       if(
         !scale ||
-        pts.length !== 4
+        points.length !== 4
       ){
 
         say(
-          "Ölçüm için önce kalibrasyon ve 4 köşe gerekir."
+          "Önce kalibrasyon ve 4 köşe gerekir."
         );
 
         return;
+
       }
 
-      const a =
-        dist(
-          pts[0],
-          pts[1]
-        ) * scale;
 
-      const b =
-        dist(
-          pts[1],
-          pts[2]
-        ) * scale;
-
-      const c =
-        dist(
-          pts[2],
-          pts[3]
-        ) * scale;
-
-      const d =
-        dist(
-          pts[3],
-          pts[0]
+      const e1 =
+        distance(
+          points[0],
+          points[1]
         ) * scale;
 
 
-      const w =
-        (a+c) / 2;
+      const e2 =
+        distance(
+          points[1],
+          points[2]
+        ) * scale;
 
-      const h =
-        (b+d) / 2;
+
+      const e3 =
+        distance(
+          points[2],
+          points[3]
+        ) * scale;
 
 
-      if(
-        !Number.isFinite(w) ||
-        !Number.isFinite(h) ||
-        w <= 0 ||
-        h <= 0
-      ){
+      const e4 =
+        distance(
+          points[3],
+          points[0]
+        ) * scale;
 
-        say(
-          "Ölçüm hesaplanamadı. Noktaları yeniden seçin."
-        );
 
-        return;
-      }
+      const width =
+        (e1 + e3) / 2;
+
+
+      const height =
+        (e2 + e4) / 2;
 
 
       const area =
-        w * h;
+        width * height;
+
+
+      edge1.textContent =
+        e1.toFixed(1) +
+        " cm";
+
+
+      edge2.textContent =
+        e2.toFixed(1) +
+        " cm";
 
 
       result.innerHTML =
         "Genişlik: <b>" +
-        w.toFixed(1) +
+        width.toFixed(1) +
         " cm</b><br>" +
 
         "Uzunluk: <b>" +
-        h.toFixed(1) +
+        height.toFixed(1) +
         " cm</b><br>" +
 
         "Yaklaşık alan: <b>" +
@@ -1344,8 +2195,268 @@ canvas{
         " cm²</b>";
 
 
+      addMeasurement({
+
+        reference:
+          referenceCm === 2.615
+            ? "1 TL"
+            : referenceCm === 21
+              ? "A4 kısa"
+              : "A4 uzun",
+
+        width,
+
+        height,
+
+        area
+
+      });
+
+
       say(
-        "Ölçüm tamamlandı."
+        "Ölçüm tamamlandı ve geçmişe kaydedildi."
+      );
+
+    }
+  );
+
+
+  function addMeasurement(data){
+
+    const item = {
+
+      id:
+        Date.now(),
+
+      date:
+        new Date().toLocaleString(
+          "tr-TR"
+        ),
+
+      reference:
+        data.reference,
+
+      width:
+        Number(
+          data.width.toFixed(1)
+        ),
+
+      height:
+        Number(
+          data.height.toFixed(1)
+        ),
+
+      area:
+        Number(
+          data.area.toFixed(1)
+        )
+
+    };
+
+
+    historyMeasurements.unshift(
+      item
+    );
+
+
+    if(
+      historyMeasurements.length > 100
+    ){
+
+      historyMeasurements =
+        historyMeasurements.slice(
+          0,
+          100
+        );
+
+    }
+
+
+    localStorage.setItem(
+      "kumasOlcProHistory",
+      JSON.stringify(
+        historyMeasurements
+      )
+    );
+
+
+    renderHistory();
+
+  }
+
+
+  function deleteMeasurement(id){
+
+    historyMeasurements =
+      historyMeasurements.filter(
+        item =>
+          item.id !== id
+      );
+
+
+    localStorage.setItem(
+      "kumasOlcProHistory",
+      JSON.stringify(
+        historyMeasurements
+      )
+    );
+
+
+    renderHistory();
+
+  }
+
+
+  function renderHistory(){
+
+    if(
+      !historyMeasurements.length
+    ){
+
+      historyList.innerHTML =
+        `<div class="history-empty">
+          Henüz kayıtlı ölçüm yok.
+        </div>`;
+
+      return;
+
+    }
+
+
+    historyList.innerHTML =
+      "";
+
+
+    historyMeasurements.forEach(
+      item => {
+
+        const box =
+          document.createElement(
+            "div"
+          );
+
+
+        box.className =
+          "history-item";
+
+
+        box.innerHTML = `
+
+          <div class="history-top">
+
+            <div class="history-ref">
+              ${item.reference}
+            </div>
+
+            <div class="history-date">
+              ${item.date}
+            </div>
+
+          </div>
+
+          <div class="history-values">
+
+            <div class="history-value">
+              <small>Genişlik</small>
+              <strong>
+                ${item.width} cm
+              </strong>
+            </div>
+
+            <div class="history-value">
+              <small>Uzunluk</small>
+              <strong>
+                ${item.height} cm
+              </strong>
+            </div>
+
+            <div class="history-value">
+              <small>Alan</small>
+              <strong>
+                ${item.area} cm²
+              </strong>
+            </div>
+
+          </div>
+
+          <button
+            class="history-delete"
+            data-id="${item.id}"
+          >
+            Bu ölçümü sil
+          </button>
+        `;
+
+
+        box
+          .querySelector(
+            ".history-delete"
+          )
+          .addEventListener(
+            "click",
+            () => {
+
+              deleteMeasurement(
+                item.id
+              );
+
+            }
+          );
+
+
+        historyList.appendChild(
+          box
+        );
+
+      }
+    );
+
+  }
+
+
+  clearHistory.addEventListener(
+    "click",
+    () => {
+
+      if(
+        !historyMeasurements.length
+      ){
+
+        say(
+          "Silinecek geçmiş ölçüm yok."
+        );
+
+        return;
+
+      }
+
+
+      const ok =
+        confirm(
+          "Tüm ölçüm geçmişi silinsin mi?"
+        );
+
+
+      if(!ok){
+
+        return;
+
+      }
+
+
+      historyMeasurements = [];
+
+
+      localStorage.removeItem(
+        "kumasOlcProHistory"
+      );
+
+
+      renderHistory();
+
+
+      say(
+        "Ölçüm geçmişi temizlendi."
       );
 
     }
@@ -1370,9 +2481,12 @@ canvas{
   );
 
 
+  renderHistory();
+
   reset();
 
 })();
+
 </script>
 
 </body>
