@@ -31,7 +31,8 @@ button:disabled{opacity:.4}
 <button id="tl" disabled>🪙 1 TL (26,15 mm)</button>
 <button id="corners" disabled>Kumaş 4 köşe</button>
 <button id="measure" class="primary" disabled>📏 Ölç</button>
-  <button id="undo" disabled>↩️ Geri Al</button>
+<button id="undo" disabled>↩️ Geri Al</button>
+<button id="redo" disabled>↪️ İleri Al</button>
 <button id="clear">Sıfırla</button>
 </div>
 <div id="status" class="status">Fotoğraf yükleyerek başlayın.</div>
@@ -61,13 +62,14 @@ Kumaş köşelerini saat yönünde sırayla seçin. Fotoğraf ve ölçümler bu 
   const gallery=$("gallery"), camera=$("camera"), a4=$("a4"), tl=$("tl");
   const corners=$("corners"), measure=$("measure"), clear=$("clear");
   const status=$("status"), result=$("result");
-  let img=null, pts=[], mode=null, refCm=0, scale=0; let lastPts=[];
+  
 
   const say=t=>status.textContent=t;
   function savePoints(){
   lastPts=pts.map(p=>({x:p.x,y:p.y}));
   $("undo").disabled=lastPts.length===0;
 }
+  let lastUndoPoint=null;
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 
   function reset(){
@@ -102,11 +104,23 @@ Kumaş köşelerini saat yönünde sırayla seçin. Fotoğraf ve ölçümler bu 
 
   gallery.addEventListener("change",e=>{loadFile(e.target.files?.[0]); e.target.value="";});
   camera.addEventListener("change",e=>{loadFile(e.target.files?.[0]); e.target.value="";});
+  $("redo").addEventListener("click",()=>{
+  if(!lastUndoPoint)return;
+
+  pts.push(lastUndoPoint);
+  lastUndoPoint=null;
+
+  $("redo").disabled=true;
+  $("undo").disabled=false;
+
+  draw();
+  say("Son nokta ileri alındı.");
+});
   
   $("undo").addEventListener("click",()=>{
   if(!pts.length)return;
 
-  pts.pop();
+  lastUndoPoint=pts.pop();
 
   if(mode==="fabric"){
     measure.disabled=true;
@@ -119,6 +133,7 @@ Kumaş köşelerini saat yönünde sırayla seçin. Fotoğraf ve ölçümler bu 
   }
 
   $("undo").disabled=pts.length===0;
+    $("redo").disabled=false;
   draw();
   say("Son nokta geri alındı. Yeniden seçebilirsiniz.");
 });
