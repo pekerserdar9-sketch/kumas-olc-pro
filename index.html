@@ -31,6 +31,7 @@ button:disabled{opacity:.4}
 <button id="tl" disabled>🪙 1 TL (26,15 mm)</button>
 <button id="corners" disabled>Kumaş 4 köşe</button>
 <button id="measure" class="primary" disabled>📏 Ölç</button>
+  <button id="undo" disabled>↩️ Geri Al</button>
 <button id="clear">Sıfırla</button>
 </div>
 <div id="status" class="status">Fotoğraf yükleyerek başlayın.</div>
@@ -60,9 +61,13 @@ Kumaş köşelerini saat yönünde sırayla seçin. Fotoğraf ve ölçümler bu 
   const gallery=$("gallery"), camera=$("camera"), a4=$("a4"), tl=$("tl");
   const corners=$("corners"), measure=$("measure"), clear=$("clear");
   const status=$("status"), result=$("result");
-  let img=null, pts=[], mode=null, refCm=0, scale=0;
+  let img=null, pts=[], mode=null, refCm=0, scale=0; let lastPts=[];
 
   const say=t=>status.textContent=t;
+  function savePoints(){
+  lastPts=pts.map(p=>({x:p.x,y:p.y}));
+  $("undo").disabled=lastPts.length===0;
+}
   const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 
   function reset(){
@@ -97,6 +102,26 @@ Kumaş köşelerini saat yönünde sırayla seçin. Fotoğraf ve ölçümler bu 
 
   gallery.addEventListener("change",e=>{loadFile(e.target.files?.[0]); e.target.value="";});
   camera.addEventListener("change",e=>{loadFile(e.target.files?.[0]); e.target.value="";});
+  
+  $("undo").addEventListener("click",()=>{
+  if(!pts.length)return;
+
+  pts.pop();
+
+  if(mode==="fabric"){
+    measure.disabled=true;
+  }
+
+  if(mode==="ref"){
+    scale=0;
+    corners.disabled=true;
+    measure.disabled=true;
+  }
+
+  $("undo").disabled=pts.length===0;
+  draw();
+  say("Son nokta geri alındı. Yeniden seçebilirsiniz.");
+});
   clear.addEventListener("click",reset);
 
   function reference(cm,name){
@@ -129,7 +154,7 @@ Kumaş köşelerini saat yönünde sırayla seçin. Fotoğraf ve ölçümler bu 
     e.preventDefault();
     const p=pos(e);
     if(mode==="ref"){
-      pts.push(p);draw();
+      pts.push(p);savePoints();draw();
       if(pts.length===2){
         const px=dist(pts[0],pts[1]);
         if(px < Math.max(8,canvas.width*0.01)){
